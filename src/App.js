@@ -2,7 +2,7 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 import { useDispatch, useSelector } from "react-redux";
-import { nextMovie, addFavorites, previousMovie } from "./actions";
+import { nextMovie, addFavorites, previousMovie, toHome } from "./actions";
 
 function App() {
   const sira = useSelector((store) => store.sira);
@@ -34,6 +34,15 @@ function App() {
           <Movie sira={sira} />
 
           <div className="flex gap-3 justify-end py-3">
+            {sira !== 0 && (
+              <button
+                onClick={() => dispatch(toHome())}
+                className="select-none px-4 py-2 bg-green-700 hover:bg-blue-600 text-white"
+              >
+                Başa Dön
+              </button>
+            )}
+
             {sira !== 0 && (
               <button
                 onClick={() => dispatch(previousMovie())}
