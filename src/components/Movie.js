@@ -6,7 +6,6 @@ export default function Movie(props) {
   const movies = useSelector((store) => store.movies);
   const sira = useSelector((store) => store.sira);
   const movie = movies[sira];
-  //const movie = movies[props.sira];
 
   return (
     <div className="flex bg-white shadow-lg items-start">
