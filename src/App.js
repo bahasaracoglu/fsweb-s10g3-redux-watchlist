@@ -60,7 +60,9 @@ function App() {
               </button>
             )}
             <button
-              onClick={() => dispatch(addFavorites(movies[sira]))}
+              onClick={() =>
+                dispatch(addFavorites({ ...movies[sira], key: Date.now() }))
+              }
               className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
             >
               Listeme ekle
@@ -71,7 +73,7 @@ function App() {
         <Route path="/listem">
           <div>
             {favMovies.map((movie) => (
-              <FavMovie movie={movie} />
+              <FavMovie key={movie.id} movie={movie} />
             ))}
           </div>
         </Route>

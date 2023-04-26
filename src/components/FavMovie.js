@@ -4,7 +4,10 @@ import { removeFavorites } from "../actions";
 export default function FavMovie({ movie }) {
   const dispatch = useDispatch();
   return (
-    <div className="flex p-3 pl-4 bg-white mb-2 shadow items-center group">
+    <div
+      className="flex p-3 pl-4 bg-white mb-2 shadow items-center group"
+      key={movie.id}
+    >
       <div className="pr-4 flex-1">{movie.title}</div>
       <button
         onClick={() => dispatch(removeFavorites(movie))}
