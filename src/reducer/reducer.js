@@ -1,5 +1,10 @@
-import { useSelector } from "react-redux";
-import { ADD_FAVORITES, NEXT_MOVIE, PREVIOS_MOVIE, TO_HOME } from "../actions";
+import {
+  ADD_FAVORITES,
+  NEXT_MOVIE,
+  PREVIOS_MOVIE,
+  TO_HOME,
+  REMOVE_FAVORITES,
+} from "../actions";
 import { movies } from "../movies";
 
 const initialState = { sira: 0, movies: movies, favMovies: [] };
@@ -21,8 +26,18 @@ const reducer = (state = initialState, action) => {
         favMovies: [...state.favMovies, action.payload],
         movies: state.movies.filter((movie) => movie.id !== action.payload.id),
       };
+
+    case REMOVE_FAVORITES:
+      return {
+        ...state,
+        favMovies: state.favMovies.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+        movies: [...state.movies, action.payload],
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;

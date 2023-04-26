@@ -71,7 +71,7 @@ function App() {
         <Route path="/listem">
           <div>
             {favMovies.map((movie) => (
-              <FavMovie key={movie.id} title={movie.title} id={movie.id} />
+              <FavMovie movie={movie} />
             ))}
           </div>
         </Route>
